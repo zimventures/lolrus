@@ -4,7 +4,7 @@
 
 A desktop S3-compatible object storage browser built with [DearPyGui](https://github.com/hoffstadt/DearPyGui).
 
-![lolrus meme](https://i.imgflip.com/1bij.jpg)
+![lolrus meme](https://ihasabucket.com/images/walrus_bucket.jpg)
 
 ## Features
 
