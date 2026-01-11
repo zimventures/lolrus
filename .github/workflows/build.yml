@@ -23,7 +23,7 @@ jobs:
           - os: windows-latest
             platform: windows
             artifact_name: lolrus-windows-x86_64.exe
-          - os: macos-13
+          - os: macos-15
             platform: macos-intel
             artifact_name: lolrus-macos-intel
           - os: macos-latest
@@ -107,18 +107,19 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
+          merge-multiple: true
 
       - name: Display structure of downloaded files
         run: ls -laR artifacts
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: lolrus ${{ github.ref_name }}
           draft: false
           prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'rc') }}
           files: |
-            artifacts/**/*
+            artifacts/*
           body: |
             ## lolrus ${{ github.ref_name }}
             
