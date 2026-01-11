@@ -201,9 +201,8 @@ class LolrusApp:
 
         with dpg.window(tag=self.TAG_MAIN_WINDOW):
             # Menu bar
-            with dpg.menu_bar():
-                with dpg.menu(label="Help"):
-                    dpg.add_menu_item(label="About", callback=self._show_about_dialog)
+            with dpg.menu_bar(), dpg.menu(label="Help"):
+                dpg.add_menu_item(label="About", callback=self._show_about_dialog)
 
             # Top toolbar
             with dpg.group(horizontal=True):
@@ -271,8 +270,9 @@ class LolrusApp:
             # Main content area: table + preview panel side-by-side
             with dpg.group(horizontal=True, tag="main_content_group"):
                 # Table container (width adjusts when preview is shown)
-                with dpg.child_window(tag="table_container", width=-1, height=-80, border=False):
-                    with dpg.table(
+                with (
+                    dpg.child_window(tag="table_container", width=-1, height=-80, border=False),
+                    dpg.table(
                         tag=self.TAG_OBJECT_TABLE,
                         header_row=True,
                         resizable=True,
@@ -285,12 +285,13 @@ class LolrusApp:
                         height=-1,
                         sortable=True,
                         callback=self._on_table_sort,
-                    ):
-                        dpg.add_table_column(label="", width_fixed=True, init_width_or_weight=30, no_sort=True)  # Checkbox
-                        dpg.add_table_column(label="Name", init_width_or_weight=3, tag=self.TAG_COL_NAME)
-                        dpg.add_table_column(label="Size", init_width_or_weight=1, tag=self.TAG_COL_SIZE)
-                        dpg.add_table_column(label="Last Modified", init_width_or_weight=1.5, tag=self.TAG_COL_MODIFIED)
-                        dpg.add_table_column(label="Storage Class", init_width_or_weight=1, tag=self.TAG_COL_STORAGE)
+                    ),
+                ):
+                    dpg.add_table_column(label="", width_fixed=True, init_width_or_weight=30, no_sort=True)  # Checkbox
+                    dpg.add_table_column(label="Name", init_width_or_weight=3, tag=self.TAG_COL_NAME)
+                    dpg.add_table_column(label="Size", init_width_or_weight=1, tag=self.TAG_COL_SIZE)
+                    dpg.add_table_column(label="Last Modified", init_width_or_weight=1.5, tag=self.TAG_COL_MODIFIED)
+                    dpg.add_table_column(label="Storage Class", init_width_or_weight=1, tag=self.TAG_COL_STORAGE)
 
                 # Preview panel (initially hidden)
                 with dpg.child_window(tag=self.TAG_PREVIEW_PANEL, width=400, height=-80, show=False, border=True):
@@ -1650,13 +1651,12 @@ class LolrusApp:
 
         # Theme for hyperlinks (create once)
         if not dpg.does_item_exist("link_theme"):
-            with dpg.theme(tag="link_theme"):
-                with dpg.theme_component(dpg.mvButton):
-                    dpg.add_theme_color(dpg.mvThemeCol_Button, (0, 0, 0, 0))
-                    dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (0, 0, 0, 0))
-                    dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, (0, 0, 0, 0))
-                    dpg.add_theme_color(dpg.mvThemeCol_Text, (100, 180, 255))
-                    dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 0, 0)
+            with dpg.theme(tag="link_theme"), dpg.theme_component(dpg.mvButton):
+                dpg.add_theme_color(dpg.mvThemeCol_Button, (0, 0, 0, 0))
+                dpg.add_theme_color(dpg.mvThemeCol_ButtonHovered, (0, 0, 0, 0))
+                dpg.add_theme_color(dpg.mvThemeCol_ButtonActive, (0, 0, 0, 0))
+                dpg.add_theme_color(dpg.mvThemeCol_Text, (100, 180, 255))
+                dpg.add_theme_style(dpg.mvStyleVar_FramePadding, 0, 0)
 
         with dpg.window(
             label="About lolrus",

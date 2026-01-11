@@ -26,7 +26,7 @@ jobs:
           - os: macos-13
             platform: macos-intel
             artifact_name: lolrus-macos-intel
-          - os: macos-14
+          - os: macos-latest
             platform: macos-arm
             artifact_name: lolrus-macos-arm64
 
