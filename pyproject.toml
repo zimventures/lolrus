@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lolrus"
+version = "0.1.0"
+description = "I has a bucket! A desktop S3-compatible object storage browser."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Rob", email = "rob@example.com" }
+]
+keywords = ["s3", "object-storage", "linode", "aws", "browser", "gui"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: MacOS X",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "dearpygui>=2.0.0",
+    "boto3>=1.35.0",
+    "keyring>=25.0.0",
+    "humanize>=4.10.0",
+    "Pillow>=10.0.0",
+    "DearPyGui-DragAndDrop>=1.0.0; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.8.0",
+    "pyinstaller>=6.0.0",
+]
+
+[project.scripts]
+lolrus = "lolrus.__main__:main"
+
+[project.gui-scripts]
+lolrus-gui = "lolrus.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/zimventures/lolrus"
+Repository = "https://github.com/zimventures/lolrus"
+Issues = "https://github.com/zimventures/lolrus/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lolrus"]
+
+[tool.ruff]
+line-length = 160
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
