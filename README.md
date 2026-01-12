@@ -17,6 +17,28 @@ A desktop S3-compatible object storage browser built with [DearPyGui](https://gi
 - 🔥 **Empty bucket** - Nuclear option to delete ALL objects (requires typing bucket name to confirm)
 - 📊 **Async operations** - All long-running operations happen in the background with progress indication
 
+## Screenshots
+
+### File Preview
+Preview text files, images, and archive contents directly in the app.
+
+![Preview Panel](docs/images/preview.png)
+
+### Connection Management
+Easily manage multiple S3-compatible storage connections with preset endpoints for popular providers.
+
+![Connection Management](docs/images/connection-management.png)
+
+### Bulk Operations
+Select multiple objects for batch download or delete operations.
+
+![Multi-Delete](docs/images/multi-delete.png)
+
+### Integrated Logging
+Built-in log console for monitoring operations and troubleshooting.
+
+![Integrated Logging](docs/images/integrated-logging.png)
+
 ## Installation
 
 ### Pre-built binaries
