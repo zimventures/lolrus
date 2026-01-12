@@ -74,6 +74,8 @@ lolrus includes presets for common S3-compatible providers:
 
 This visual guide walks you through the key features and workflows in lolrus.
 
+> **Note:** The screenshots below are mockup representations of the UI. We welcome contributions of actual screenshots! See [`assets/screenshots/README.md`](assets/screenshots/README.md) for guidelines on capturing and submitting real screenshots or animated GIFs.
+
 ### 1. Main Window Overview
 
 When you first launch lolrus, you'll see the main window with the object browser interface:
