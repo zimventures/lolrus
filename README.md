@@ -70,11 +70,99 @@ lolrus includes presets for common S3-compatible providers:
 - MinIO (local development)
 - Cloudflare R2
 
-### Emptying a Bucket
+## Getting Started Guide
 
-The "Empty Bucket" feature is designed for situations like deprovisioning infrastructure where you need to delete all objects before the bucket can be removed.
+This visual guide walks you through the key features and workflows in lolrus.
 
-⚠️ **Warning:** This operation is irreversible. You must type the exact bucket name to confirm.
+### 1. Main Window Overview
+
+When you first launch lolrus, you'll see the main window with the object browser interface:
+
+![Main Window](assets/screenshots/01-main-window.png)
+
+The main window consists of:
+- **Connection dropdown** - Select your S3 connection
+- **Bucket dropdown** - Choose which bucket to browse
+- **Path input** - Navigate to specific folders/prefixes
+- **Action buttons** - Upload, Download, Delete, Refresh, and Empty Bucket
+- **Object table** - Browse files and folders with details (name, size, last modified, storage class)
+- **Status bar** - Shows current operation status and selection info
+
+### 2. Creating a New Connection
+
+Click the **New** button to configure a connection to your S3-compatible storage:
+
+![New Connection Dialog](assets/screenshots/02-new-connection.png)
+
+**Steps:**
+1. Enter a memorable **Connection Name** (e.g., "My Linode Storage")
+2. Select an **Endpoint Preset** from the dropdown (or choose "Custom" for other providers)
+3. The **Endpoint URL** will auto-fill based on your preset selection
+4. Enter your **Access Key ID** and **Secret Access Key**
+5. Verify the **Region** matches your storage location
+6. Click **Test Connection** to verify your credentials work
+7. Click **Save** to store the connection securely (credentials are stored in your system keyring)
+
+### 3. Browsing Objects
+
+Once connected, select a bucket to browse its contents:
+
+![Bucket Browser](assets/screenshots/03-bucket-browser.png)
+
+**Features:**
+- **Folder navigation** - Click on folders (📁) to navigate into them, or use ".." to go back
+- **Selection** - Check boxes to select multiple files for batch operations
+- **Sorting** - Click column headers to sort by name, size, date, or storage class
+- **Visual indicators** - Icons differentiate folders from files
+- **Path breadcrumbs** - The path input shows your current location and can be edited directly
+
+### 4. Uploading Files
+
+Click **Upload** to add files to your bucket:
+
+![Upload Progress](assets/screenshots/04-upload-progress.png)
+
+The upload process:
+1. Click the **Upload** button
+2. Select one or more files from the file picker
+3. Watch the progress bar showing:
+   - Current file being uploaded
+   - Progress percentage
+   - Data transferred / Total size
+4. Files appear in the bucket immediately after upload completes
+
+**Tip:** On Windows, you can also drag and drop files directly onto the window to upload them!
+
+### 5. Deleting Objects
+
+Select one or more objects and click **Delete**:
+
+![Delete Confirmation](assets/screenshots/05-delete-confirm.png)
+
+**Safety features:**
+- Confirmation dialog shows the number of objects to be deleted
+- Clear warning that the action cannot be undone
+- Cancel button to abort if you change your mind
+
+### 6. Emptying a Bucket
+
+For bulk deletion of all objects in a bucket, use the **Empty Bucket** feature:
+
+![Empty Bucket Warning](assets/screenshots/06-empty-bucket.png)
+
+**Important safety measures:**
+- ⚠️ **DANGER** warning clearly indicates this is a destructive operation
+- You must type the exact bucket name to confirm
+- Useful for deprovisioning infrastructure or cleaning up test environments
+- **This action cannot be undone** - all objects will be permanently deleted
+
+### Additional Features
+
+- **Download** - Select objects and click Download to save them locally
+- **Refresh** - Update the object list to see changes made outside lolrus
+- **Multiple selections** - Use checkboxes to work with multiple files at once
+- **Async operations** - Long operations run in the background with progress tracking
+- **Secure credentials** - All credentials are stored in your system's native keyring
 
 ## Building
 
